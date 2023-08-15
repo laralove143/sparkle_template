@@ -1,0 +1,19 @@
+[package]
+name = "template"
+description = "Template for Twilight boilerplate using Sparkle Convenience"
+license = "MIT"
+repository = "https://github.com/laralove143/sparkle-template"
+keywords = ["discord", "discord-api", "discord-bot", "twilight"]
+categories = []
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sparkle-convenience = { version = "0.16.0-rc.3", features = ["anyhow"] }
+twilight-gateway = "0.15"
+twilight-model = "0.15"
+twilight-interactions = "0.15"
+tokio = { version = "1.30", features = ["rt-multi-thread", "macros"] }
+futures = {version = "0.3", default-features = false }
+anyhow = { version = "1.0", features = ["backtrace"] }
+thiserror = "1.0"
