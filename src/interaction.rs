@@ -52,12 +52,13 @@ impl Context {
         };
 
         if let Err(err) = handle_interaction_res {
-            err_handle
-                .report_error(
-                    err_reply(),
-                    UserError::<NoCustomError>::from_anyhow_err(&err),
-                )
-                .await?;
+            let user_err = UserError::<NoCustomError>::from_anyhow_err(&err);
+
+            err_handle.report_error(err_reply(), user_err).await?;
+
+            if matches!(user_err, UserError::Internal) {
+                return Err(err);
+            }
         }
 
         Ok(())
