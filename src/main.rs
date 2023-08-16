@@ -101,10 +101,13 @@ use std::{env, fmt::Debug, sync::Arc};
 use futures::StreamExt;
 use sparkle_convenience::{reply::Reply, Bot};
 use twilight_gateway::EventTypeFlags;
+use twilight_http as _;
 use twilight_model::{
     application::interaction::Interaction,
     gateway::{event::Event, Intents},
 };
+
+
 
 mod interaction;
 
