@@ -10,6 +10,7 @@ edition = "2021"
 
 [dependencies]
 sparkle-convenience = { version = "0.16.0-rc.3", features = ["anyhow"] }
+twilight-http = { version = "0.15", default-features = false, features = ["decompression", "simd-json", "rustls-webpki-roots", "trust-dns"] }
 twilight-gateway = "0.15"
 twilight-model = "0.15"
 twilight-interactions = "0.15"
