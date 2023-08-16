@@ -15,6 +15,6 @@ twilight-gateway = { version = "0.15", default-features = false, features = ["si
 twilight-model = "0.15"
 twilight-interactions = "0.15"
 tokio = { version = "1.30", features = ["rt-multi-thread", "macros"] }
-futures = {version = "0.3", default-features = false }
+futures = { version = "0.3", default-features = false }
 anyhow = { version = "1.0", features = ["backtrace"] }
 thiserror = "1.0"
