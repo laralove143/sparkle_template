@@ -107,16 +107,12 @@ use twilight_model::{
     gateway::{event::Event, Intents},
 };
 
-
-
 mod interaction;
 
 #[derive(Debug, thiserror::Error)]
 enum Error {
     #[error("unknown interaction: {0:#?}")]
     UnknownInteraction(Interaction),
-    #[error("unexpected event: {0:#?}")]
-    UnexpectedEvent(Event),
 }
 
 struct Context {
@@ -156,7 +152,7 @@ async fn main() -> Result<(), anyhow::Error> {
                     Event::InteractionCreate(interaction) => {
                         ctx.handle_interaction(interaction.0).await
                     }
-                    _ => Err(Error::UnexpectedEvent(event).into()),
+                    _ => Ok(()),
                 };
 
                 if let Err(err) = handle_event_res {
