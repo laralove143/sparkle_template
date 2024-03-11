@@ -6,6 +6,7 @@ license = "FILLME"
 
 [dependencies]
 anyhow = "1.0"
+dotenvy = "0.15"
 futures-util = { version = "0.3", default-features = false }
 tokio = { version = "1.36", features = ["macros", "rt-multi-thread"] }
 tracing = { version = "0.1", default-features = false, features = ["std"] }

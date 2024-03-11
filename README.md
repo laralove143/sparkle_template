@@ -25,6 +25,15 @@ The executable uses `anyhow` to create ad-hoc errors
 
 Panics and errors also include backtraces
 
+### Configuration with Environment Variables
+
+Environment variables are used to set info such as the bot's token
+
+A `Config` struct is provided to centralize all the configuration, which has a constructor that loads it from
+environment variables
+
+Support for `.env` files is added with the [`dotenvy`](https://docs.rs/dotenvy) crate
+
 ### Tracing
 
 [`tracing-subscriber`](https://docs.rs/tracing-subscriber) crate is configured to use the environment

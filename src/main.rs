@@ -1,4 +1,7 @@
+use std::env;
+
 use anyhow::Result;
+use dotenvy::dotenv;
 use futures_util::StreamExt;
 use tracing::{error, info};
 use tracing_log::LogTracer;
@@ -7,6 +10,20 @@ use twilight_cache_inmemory::{InMemoryCache, ResourceType};
 use twilight_gateway::stream::ShardEventStream;
 use twilight_http::Client;
 use twilight_model::gateway::Intents;
+
+struct Config {
+    token: String,
+}
+
+impl Config {
+    fn new() -> Result<Self> {
+        dotenv()?;
+
+        Ok(Self {
+            token: env::var("TOKEN")?,
+        })
+    }
+}
 
 #[tokio::main]
 async fn main() -> Result<()> {
