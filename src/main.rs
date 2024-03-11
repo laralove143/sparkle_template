@@ -1,3 +1,5 @@
+mod interaction;
+
 use std::{env, ops::Deref, sync::Arc};
 
 use anyhow::Result;
@@ -80,6 +82,7 @@ impl Context {
                 info!("ready");
                 Ok(())
             }
+            Event::InteractionCreate(interaction) => self.handle_interaction(interaction.0).await,
             _ => Ok(()),
         };
 
@@ -98,6 +101,8 @@ async fn main() -> Result<()> {
         .try_init()?;
 
     let ctx = Context::new().await?;
+
+    ctx.set_commands().await?;
 
     let mut shards = ctx.shards().await?;
     let mut event_stream = ShardEventStream::new(shards.iter_mut());

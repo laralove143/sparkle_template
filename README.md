@@ -24,6 +24,12 @@ A `Context` struct is given to share stateful data throughout the program, such 
 The struct is a wrapper around `Arc<ContextInner>` and implements `Clone`, and `Deref` to `ContextInner`, this provides
 an abstraction over the `Arc` management while making `Context` cheap to clone and safe to use in multi-threads
 
+### Event Handling
+
+Each event is handled in a separate `tokio` task spawned with `tokio::spawn`
+
+`handle_event` method on `Context` is called on each event, which handles the `Ready` and `InteractionCreate` events
+
 ### Error Handling with Anyhow
 
 [`anyhow`](https://docs.rs/anyhow) is used to handle errors in a polymorphic way
@@ -40,6 +46,29 @@ A `Config` struct is provided to centralize all the configuration, which has a c
 environment variables
 
 Support for `.env` files is added with the [`dotenvy`](https://docs.rs/dotenvy) crate
+
+### Conventional Interaction Handling
+
+`InteractionContext` is given to create responses with less boilerplate
+
+The trait `CreateCommand` defines a method to build the `Command`, the trait `RunInteraction` defines methods to run the
+interaction
+
+Each interaction should have its own module under the `interaction` module, the module should define a struct with the
+data required while running the interaction, including `InteractionContext`
+
+The traits `CreateCommand` and `RunInteraction` are meant to be defined on the interaction's struct, they define methods
+to build and run the interaction
+
+Some methods are implemented on `Context` to streamline managing interactions:
+
+- **`interaction_client`**: Given to easily access `InteractionClient`
+- **`set_commands`**: Set the commands of the bot, this is called in the `main` function
+
+Additionally, `Context` has a `handle_interaction` method that runs a given `Interaction`, which extracts `custom_id`
+and matches on it to run the appropriate command
+
+A sample implementation of an interaction can be found at `interaction/mock.rs`
 
 ### Tracing
 
