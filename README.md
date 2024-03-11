@@ -17,6 +17,14 @@ These crates aren't included because they aren't used very often:
 - `twilight-http-ratelimiting`
 - `twilight-lavalink`
 
+### Error Handling with Anyhow
+
+[`anyhow`](https://docs.rs/anyhow) is used to handle errors in a polymorphic way
+
+The executable uses `anyhow` to create ad-hoc errors
+
+Panics and errors also include backtraces
+
 ### Tracing
 
 [`tracing-subscriber`](https://docs.rs/tracing-subscriber) crate is configured to use the environment

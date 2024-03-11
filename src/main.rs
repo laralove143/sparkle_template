@@ -1,3 +1,4 @@
+use anyhow::Result;
 use futures_util::StreamExt;
 use tracing::{error, info};
 use tracing_log::LogTracer;
@@ -8,13 +9,12 @@ use twilight_http::Client;
 use twilight_model::gateway::Intents;
 
 #[tokio::main]
-async fn main() {
-    LogTracer::init().unwrap();
+async fn main() -> Result<()> {
+    LogTracer::init()?;
     tracing_subscriber::registry()
         .with(tracing_subscriber::fmt::layer())
-        .with(EnvFilter::from_default_env())
-        .try_init()
-        .unwrap();
+        .with(EnvFilter::try_from_default_env()?)
+        .try_init()?;
 
     let token = "FILLME".to_owned();
 
@@ -25,8 +25,7 @@ async fn main() {
         twilight_gateway::Config::new(token, Intents::empty()),
         |_, builder| builder.build(),
     )
-    .await
-    .unwrap()
+    .await?
     .collect::<Vec<_>>();
 
     let mut event_stream = ShardEventStream::new(shards.iter_mut());
@@ -55,4 +54,6 @@ async fn main() {
             }
         };
     }
+
+    Ok(())
 }
