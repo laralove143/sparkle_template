@@ -73,11 +73,15 @@ A sample implementation of an interaction can be found at `interaction/mock.rs`
 ### Tracing
 
 [`tracing-subscriber`](https://docs.rs/tracing-subscriber) crate is configured to use the environment
-variable `RUST_LOG` to print [`tracing`](https://docs.rs/tracing) messages
+variable `RUST_LOG` to print [`tracing`](https://docs.rs/tracing) messages, the messages are formatted with the `pretty`
+configuration
 
-`tracing` is also used for the messages generated in the executable
+[`tracing-journald`](https://docs.rs/tracing-journald) crate is used to log `tracing` messages
+to [`journald`](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald)
 
-Compatibility between [`log`](https://docs.rs/log) and `tracing` is also provided
+`tracing` is used for the messages generated in the executable too
+
+Compatibility between [`log`](https://docs.rs/log) and `tracing` is provided
 with [`tracing-log`](https://docs.rs/tracing-log)
 
 ## 🤔 Usage

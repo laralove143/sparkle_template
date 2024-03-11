@@ -95,8 +95,10 @@ impl Context {
 #[tokio::main]
 async fn main() -> Result<()> {
     LogTracer::init()?;
+    let fmt_tracing_layer = tracing_subscriber::fmt::layer().without_time().pretty();
     tracing_subscriber::registry()
-        .with(tracing_subscriber::fmt::layer())
+        .with(fmt_tracing_layer)
+        .with(tracing_journald::layer()?)
         .with(EnvFilter::try_from_default_env()?)
         .try_init()?;
 
