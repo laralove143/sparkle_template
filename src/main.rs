@@ -1,4 +1,7 @@
 use futures_util::StreamExt;
+use tracing::{error, info};
+use tracing_log::LogTracer;
+use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 use twilight_cache_inmemory::{InMemoryCache, ResourceType};
 use twilight_gateway::stream::ShardEventStream;
 use twilight_http::Client;
@@ -6,6 +9,13 @@ use twilight_model::gateway::Intents;
 
 #[tokio::main]
 async fn main() {
+    LogTracer::init().unwrap();
+    tracing_subscriber::registry()
+        .with(tracing_subscriber::fmt::layer())
+        .with(EnvFilter::from_default_env())
+        .try_init()
+        .unwrap();
+
     let token = "FILLME".to_owned();
 
     let client = Client::new(token.clone());
@@ -30,14 +40,14 @@ async fn main() {
             Ok(event) => {
                 cache.update(&event);
                 tokio::spawn(async move {
-                    println!("{event:#?}");
+                    info!(?event, "event received:");
                 })
             }
             Err(err) => {
-                eprintln!("error receiving event: {err}");
+                error!(?err, "error receiving event");
 
                 if err.is_fatal() {
-                    eprintln!("received fatal error, exiting");
+                    error!("received fatal error while receiving event, exiting");
                     break;
                 }
 
