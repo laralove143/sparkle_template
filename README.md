@@ -17,6 +17,13 @@ These crates aren't included because they aren't used very often:
 - `twilight-http-ratelimiting`
 - `twilight-lavalink`
 
+### Context
+
+A `Context` struct is given to share stateful data throughout the program, such as `twilight_http::Client`
+
+The struct is a wrapper around `Arc<ContextInner>` and implements `Clone`, and `Deref` to `ContextInner`, this provides
+an abstraction over the `Arc` management while making `Context` cheap to clone and safe to use in multi-threads
+
 ### Error Handling with Anyhow
 
 [`anyhow`](https://docs.rs/anyhow) is used to handle errors in a polymorphic way
