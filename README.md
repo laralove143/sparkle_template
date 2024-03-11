@@ -1,7 +1,15 @@
 # ✨📄 Sparkle Template
 
-Template for [Twilight](https://github.com/twilight-rs/twilight) boilerplate
-using [Sparkle Convenience](https://github.com/laralove143/sparkle-convenience)
-and [Twilight Interactions](https://github.com/baptiste0928/twilight-interactions)
+Opinionated template for [Rust](https://www.rust-lang.org) projects using [Twilight](https://api.twilight.rs)
 
-This is opinionated, but you can change any parts you don't like, feel free to create an issue for suggestions
+## ✨ Features
+
+## 🤔 Usage
+
+1. Click on _Use this template_ in the GitHub web UI
+   - > Or copy-paste the code in some other way
+2. Replace occurrences of `FILLME` with the actual value
+
+## 🙋 Wanted: Issues
+
+Feel free to create an issue or PR for suggestions
