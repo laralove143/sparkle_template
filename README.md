@@ -87,7 +87,7 @@ with [`tracing-log`](https://docs.rs/tracing-log)
 ## 🤔 Usage
 
 1. Click on _Use this template_ in the GitHub web UI
-    - > Or copy-paste the code in some other way
+   - Or copy-paste the code in some other way
 2. Replace occurrences of `FILLME` with the actual values
 
 ## 🙋 Wanted: Issues
