@@ -109,6 +109,10 @@ to [`journald`](https://www.freedesktop.org/software/systemd/man/latest/systemd-
 Compatibility between [`log`](https://docs.rs/log) and `tracing` is provided
 with [`tracing-log`](https://docs.rs/tracing-log)
 
+### This `README`
+
+You can use this `README` as a template for your own `README`. It includes badges and a structure of headings.
+
 ## 🤔 Usage
 
 1. Click on _Use this template_ in the GitHub web UI
