@@ -120,7 +120,9 @@ You can use this `README` as a template for your own `README`. It includes badge
 2. Replace occurrences of `FILLME` with the actual values
 3. Update name on the `LICENSE` file
 4. Update username on `.github/FUNDING.yml`
-5. Remove lines with `suppress` if you don't want compatibility with JetBrains IDEs
+5. If you don't want compatibility with JetBrains IDEs:
+    1. Remove lines with `suppress`
+    2. Delete `/.idea` line from `.gitignore`
 
 ## 🙋 Wanted: Issues
 
