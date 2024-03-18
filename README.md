@@ -1,3 +1,28 @@
+<!--suppress HtmlDeprecatedAttribute -->
+<div align="center">
+   <a href="https://github.com/laralove143/sparkle_template/issues">
+      <img alt="Stars Badge" height="20" src="https://m3-markdown-badges.vercel.app/stars/2/1/laralove143/sparkle_template"/>
+   </a>
+   <a href="https://github.com/laralove143/sparkle_template/stargazers">
+      <img alt="Issues Badge" height="20" src="https://m3-markdown-badges.vercel.app/issues/2/1/laralove143/sparkle_template"/>
+   </a>
+   <a href="https://www.rust-lang.org">
+      <img alt="Rust" height="20" src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Rust/rust1.svg"/>
+   </a>
+   <a href="https://github.com/laralove143/sparkle_template/tree/main?tab=MIT-1-ov-file">
+      <img alt="MIT License" height="20" src="https://ziadoua.github.io/m3-Markdown-Badges/badges/LicenceMIT/licencemit1.svg"/>
+   </a><br>   
+   <a href="mailto:me@lara.lv">
+      <img alt="Mail" height="30" src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Mail/mail1.svg"/>
+   </a>
+   <a href="https://discord.lara.lv">
+      <img alt="Discord" height="30" src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Discord/discord1.svg"/>
+   </a>
+   <a href="https://github.com/sponsors/laralove143">
+      <img alt="Sponsor" height="30" src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Sponsor/sponsor1.svg"/>
+   </a>
+</div>
+
 # ✨📄 Sparkle Template
 
 Opinionated template for [Rust](https://www.rust-lang.org) projects using [Twilight](https://api.twilight.rs)
@@ -87,7 +112,7 @@ with [`tracing-log`](https://docs.rs/tracing-log)
 ## 🤔 Usage
 
 1. Click on _Use this template_ in the GitHub web UI
-   - Or copy-paste the code in some other way
+    - Or copy-paste the code in some other way
 2. Replace occurrences of `FILLME` with the actual values
 
 ## 🙋 Wanted: Issues
