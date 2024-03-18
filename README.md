@@ -124,4 +124,4 @@ You can use this `README` as a template for your own `README`. It includes badge
 
 ## 🙋 Wanted: Issues
 
-Feel free to create an issue or PR for suggestions
+Feel free to create an issue or PR for suggestions and additions
