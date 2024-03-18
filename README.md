@@ -118,6 +118,7 @@ You can use this `README` as a template for your own `README`. It includes badge
 1. Click on _Use this template_ in the GitHub web UI
     - Or copy-paste the code in some other way
 2. Replace occurrences of `FILLME` with the actual values
+3. Update name on the `LICENSE` file
 
 ## 🙋 Wanted: Issues
 
