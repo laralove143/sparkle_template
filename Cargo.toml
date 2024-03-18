@@ -1,23 +1,12 @@
 [package]
-name = "FILLME"
+name = "sparkle_template"
 edition = "2021"
-authors = ["FILLME"]
-license = "FILLME"
+authors = ["Lara Kayaalp <me@lara.lv>"]
+description = "Safe, concise Discord interaction handling for Twilight"
+documentation = "https://docs.rs/sparkle_template"
+repository = "https://github.com/laralove143/sparkle_template"
+license = "MIT"
 
 [dependencies]
-anyhow = "1.0"
-dotenvy = "0.15"
-futures-util = { version = "0.3", default-features = false }
-tokio = { version = "1.36", features = ["macros", "rt-multi-thread"] }
-tracing = { version = "0.1", default-features = false, features = ["std"] }
-tracing-journald = "0.3"
-tracing-log = "0.2"
-tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-twilight-cache-inmemory = { version = "0.15", features = ["permission-calculator"] }
-twilight-gateway = { version = "0.15", features = ["rustls-webpki-roots", "simd-json", "zlib-simd"] }
 twilight-http = { version = "0.15", features = ["rustls-webpki-roots", "simd-json", "trust-dns"] }
-twilight-mention = "0.15"
 twilight-model = "0.15"
-twilight-standby = "0.15"
-twilight-util = { version = "0.15", features = ["builder", "link", "permission-calculator", "snowflake"] }
-twilight-validate = "0.15"
