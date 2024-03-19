@@ -94,7 +94,8 @@ impl Context {
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    LogTracer::init()?;
+    dotenv()?;
+
     let fmt_tracing_layer = tracing_subscriber::fmt::layer().without_time().pretty();
     tracing_subscriber::registry()
         .with(fmt_tracing_layer)
