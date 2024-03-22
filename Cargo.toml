@@ -7,6 +7,8 @@ description = "Safe, concise Discord interaction handling for Twilight"
 documentation = "https://docs.rs/sparkle_template"
 repository = "https://github.com/laralove143/sparkle_template"
 license = "MIT"
+keywords = ["discord", "discord-api", "twilight"]
+categories = ["parsing"]
 
 [lints.rust]
 absolute_paths_not_starting_with_crate = "warn"
