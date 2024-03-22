@@ -58,6 +58,7 @@
 //! #     app_permissions: None,
 //! #     application_id: Id::new(1),
 //! #     channel: None,
+//! #     #[allow(deprecated)]
 //! #     channel_id: None,
 //! #     data: Some(InteractionData::ApplicationCommand(Box::new(CommandData {
 //! #         guild_id: None,
@@ -115,6 +116,7 @@
 //! #     app_permissions: None,
 //! #     application_id: Id::new(1),
 //! #     channel: None,
+//! #     #[allow(deprecated)]
 //! #     channel_id: None,
 //! #     data: Some(InteractionData::MessageComponent(
 //! #         MessageComponentInteractionData {
@@ -163,6 +165,7 @@
 //! #     app_permissions: None,
 //! #     application_id: Id::new(1),
 //! #     channel: None,
+//! #     #[allow(deprecated)]
 //! #     channel_id: None,
 //! #     data: Some(InteractionData::ModalSubmit(ModalInteractionData {
 //! #         components: vec![ModalInteractionDataActionRow {
