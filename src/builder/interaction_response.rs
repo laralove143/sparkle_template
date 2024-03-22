@@ -2,14 +2,6 @@
 //!
 //! The entrypoint of this module is [`InteractionResponseBuilder`].
 //! All the other builders can be created using methods on it.
-//!
-//! Twilight Util has an [`InteractionResponseDataBuilder`] struct to build
-//! interaction response data.
-//! This builder creates [`InteractionResponse`]s from
-//! [`InteractionResponseData`]
-//!
-//! [`InteractionResponseDataBuilder`]:
-//! https://api.twilight.rs/twilight_util/builder/struct.InteractionResponseDataBuilder
 use twilight_model::{
     channel::message::{
         component::{ActionRow, TextInput},
@@ -124,6 +116,15 @@ impl ModalInteractionResponseBuilder {
 }
 
 /// Create an [`InteractionResponse`] with a builder.
+///
+/// Twilight Util has an [`InteractionResponseDataBuilder`] struct to build
+/// interaction response data.
+/// This builder creates [`InteractionResponse`]s from
+/// [`InteractionResponseData`], except for
+/// [`InteractionResponseBuilder::show_modal`]
+///
+/// [`InteractionResponseDataBuilder`]:
+/// https://api.twilight.rs/twilight_util/builder/struct.InteractionResponseDataBuilder
 #[derive(Copy, Clone, Eq, PartialEq, Debug)]
 pub struct InteractionResponseBuilder;
 
