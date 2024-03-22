@@ -29,8 +29,12 @@ Safe, concise Discord interaction handling for Twilight
 
 ## ✨ Features
 
-> _WIP_
+### Extracting Interaction Data
+
+This library provides methods to extract interaction data, command options and modal components concisely.
+
+See module documentation of the `extract` module for more.
 
 ## 🙋 Wanted: Issues
 
-Feel free to create an issue or PR for suggestions and additions
+Feel free to create an issue or PR for suggestions and additions.
