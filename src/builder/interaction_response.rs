@@ -77,6 +77,8 @@ impl DeferInteractionResponseBuilder {
 }
 
 /// Create an [`InteractionResponse`] to show a modal with a builder.
+///
+/// This is created with [`InteractionResponseBuilder::show_modal`].
 #[derive(Clone, Eq, PartialEq, Hash, Debug)]
 pub struct ModalInteractionResponseBuilder {
     action_rows: Vec<ActionRow>,

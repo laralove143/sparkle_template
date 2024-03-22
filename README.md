@@ -35,6 +35,13 @@ This library provides methods to extract interaction data, command options, and 
 
 See module documentation of the `extract` module for more.
 
+### Builders
+
+Builders for components and interaction responses are given by the library, allowing you to create these structs
+concisely and safely.
+
+See module documentation of the `builder` module for more.
+
 ## 🏷️ Versioning
 
 Since this crate is a third party crate for Twilight, its minor version follows the minor version of Twilight that this
