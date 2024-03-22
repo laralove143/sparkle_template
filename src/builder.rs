@@ -1,5 +1,6 @@
 //! Builders for structs used in interaction responses
 
-mod interaction_response_builder;
+pub mod component;
+mod interaction_response;
 
-pub use interaction_response_builder::InteractionResponseBuilder;
+pub use interaction_response::InteractionResponseBuilder;
