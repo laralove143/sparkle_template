@@ -1,0 +1,157 @@
+use twilight_model::{
+    channel::message::MessageFlags,
+    http::interaction::{InteractionResponse, InteractionResponseData, InteractionResponseType},
+};
+
+/// Create an [`InteractionResponse`] to defer an interaction with a builder.
+///
+/// This is created with [`InteractionResponseBuilder::defer_send_message`] or
+/// [`InteractionResponseBuilder::defer_update_message`].
+#[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
+pub struct DeferInteractionResponseBuilder {
+    response_type: InteractionResponseType,
+    is_ephemeral: bool,
+    suppress_embeds: bool,
+}
+
+impl DeferInteractionResponseBuilder {
+    /// Set the response to be ephemeral.
+    ///
+    /// This makes the response only visible to the user that created the
+    /// interaction.
+    #[must_use]
+    pub const fn ephemeral(mut self) -> Self {
+        self.is_ephemeral = true;
+        self
+    }
+
+    /// Set the response to not show embeds.
+    #[must_use]
+    pub const fn suppress_embeds(mut self) -> Self {
+        self.suppress_embeds = true;
+        self
+    }
+
+    /// Consume this builder and return the configured [`InteractionResponse`]
+    pub fn build(self) -> InteractionResponse {
+        let mut flags = MessageFlags::empty();
+        if self.is_ephemeral {
+            flags.insert(MessageFlags::EPHEMERAL);
+        }
+        if self.suppress_embeds {
+            flags.insert(MessageFlags::SUPPRESS_EMBEDS);
+        }
+
+        InteractionResponse {
+            kind: InteractionResponseType::DeferredChannelMessageWithSource,
+            data: Some(InteractionResponseData {
+                allowed_mentions: None,
+                attachments: None,
+                choices: None,
+                components: None,
+                content: None,
+                custom_id: None,
+                embeds: None,
+                flags: (!flags.is_empty()).then_some(flags),
+                title: None,
+                tts: None,
+            }),
+        }
+    }
+}
+
+/// Create an [`InteractionResponse`] with a builder.
+///
+/// Twilight Util has an [`InteractionResponseDataBuilder`] struct to build
+/// interaction response data. This builder creates [`InteractionResponse`]s
+/// from [`InteractionResponseData`]
+///
+/// [`InteractionResponseDataBuilder`]:
+/// https://api.twilight.rs/twilight_util/builder/struct.InteractionResponseDataBuilder
+#[derive(Copy, Clone, Eq, PartialEq, Debug)]
+pub struct InteractionResponseBuilder;
+
+impl InteractionResponseBuilder {
+    /// Create a response to a ping from Discord.
+    ///
+    /// This uses [`InteractionResponseType::Pong`] as the response type.
+    #[must_use]
+    pub const fn pong() -> InteractionResponse {
+        InteractionResponse {
+            kind: InteractionResponseType::Pong,
+            data: None,
+        }
+    }
+
+    /// Respond to an interaction with a message.
+    ///
+    /// This uses [`InteractionResponseType::ChannelMessageWithSource`] as the
+    /// response type.
+    #[must_use]
+    pub const fn send_message(data: InteractionResponseData) -> InteractionResponse {
+        InteractionResponse {
+            kind: InteractionResponseType::ChannelMessageWithSource,
+            data: Some(data),
+        }
+    }
+
+    /// Defer an interaction to follow up with a message later.
+    ///
+    /// This should be used when the message is expected to be sent after 3
+    /// seconds, as Discord requires a response in the first 3 seconds after an
+    /// interaction is created.
+    ///
+    /// This uses [`InteractionResponseType::DeferredChannelMessageWithSource`]
+    /// as the response type.
+    #[must_use]
+    pub const fn defer_send_message() -> DeferInteractionResponseBuilder {
+        DeferInteractionResponseBuilder {
+            response_type: InteractionResponseType::DeferredChannelMessageWithSource,
+            is_ephemeral: false,
+            suppress_embeds: false,
+        }
+    }
+
+    /// Defer a message component or modal interaction to edit the message with
+    /// the component later.
+    ///
+    /// This should be used when the message is expected to be sent after 3
+    /// seconds, as Discord requires a response in the first 3 seconds after an
+    /// interaction is created.
+    ///
+    /// This uses [`InteractionResponseType::DeferredUpdateMessage`]
+    /// as the response type.
+    #[must_use]
+    pub const fn defer_update_message() -> DeferInteractionResponseBuilder {
+        DeferInteractionResponseBuilder {
+            response_type: InteractionResponseType::DeferredUpdateMessage,
+            is_ephemeral: false,
+            suppress_embeds: false,
+        }
+    }
+
+    /// Respond to a message component or modal interaction to edit the message
+    /// with the component.
+    ///
+    /// This uses [`InteractionResponseType::UpdateMessage`] as the
+    /// response type.
+    #[must_use]
+    pub const fn update_message(data: InteractionResponseData) -> InteractionResponse {
+        InteractionResponse {
+            kind: InteractionResponseType::UpdateMessage,
+            data: Some(data),
+        }
+    }
+
+    /// Respond to an interaction with a modal.
+    ///
+    /// This uses [`InteractionResponseType::Modal`] as the
+    /// response type.
+    #[must_use]
+    pub const fn show_modal(data: InteractionResponseData) -> InteractionResponse {
+        InteractionResponse {
+            kind: InteractionResponseType::Modal,
+            data: Some(data),
+        }
+    }
+}

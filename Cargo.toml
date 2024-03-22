@@ -51,6 +51,8 @@ restriction = { level = "warn", priority = -1 }
 absolute_paths = "allow"
 blanket_clippy_restriction_lints = "allow"
 error_impl_error = "allow"
+exhaustive_enums = "allow"
+exhaustive_structs = "allow"
 implicit_return = "allow"
 missing_docs_in_private_items = "allow"
 missing_inline_in_public_items = "allow"
