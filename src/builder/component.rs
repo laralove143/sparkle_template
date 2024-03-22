@@ -1,12 +1,21 @@
 //! Builders for components
 //!
-//! The entrypoint of the builders is [`ComponentsBuilder`]. Although this is
-//! not enforced, it provides abstractions over managing action rows, making
-//! your code safer.
+//! The entrypoint of the builders for buttons and select menus is
+//! [`ComponentsBuilder`].
+//! Although this is not enforced, it provides abstractions over managing action rows,
+//! making your code safer.
+//!
+//! Similar abstractions exist for modals at
+//! [`InteractionResponseBuilder::show_modal`](crate::builder::InteractionResponseBuilder::show_modal).
+//!
+//! [`InteractionResponseBuilder::show_modal`]:
+//! (crate::builder::InteractionResponseBuilder::show_modal)
 
 use twilight_model::{
     channel::message::{
-        component::{ActionRow, Button, ButtonStyle, SelectMenu, SelectMenuOption},
+        component::{
+            ActionRow, Button, ButtonStyle, SelectMenu, SelectMenuOption, TextInput, TextInputStyle,
+        },
         Component, ReactionType,
     },
     id::{marker::EmojiMarker, Id},
@@ -235,6 +244,101 @@ impl SelectMenuBuilder {
             min_values: self.min_values,
             options: self.options,
             placeholder: self.placeholder,
+        }
+    }
+}
+
+/// Create [`TextInput`] with a builder.
+#[derive(Clone, Eq, PartialEq, Hash, Debug)]
+pub struct TextInputBuilder {
+    custom_id: String,
+    label: String,
+    max_length: Option<u16>,
+    min_length: Option<u16>,
+    placeholder: Option<String>,
+    required: bool,
+    style: TextInputStyle,
+    value: Option<String>,
+}
+
+impl TextInputBuilder {
+    /// Create a new builder for modals.
+    #[must_use]
+    pub const fn new(label: String, custom_id: String) -> Self {
+        Self {
+            custom_id,
+            label,
+            max_length: None,
+            min_length: None,
+            placeholder: None,
+            required: false,
+            style: TextInputStyle::Short,
+            value: None,
+        }
+    }
+
+    /// Set the maximum number of characters allowed to be entered into this
+    /// text input.
+    #[must_use]
+    pub const fn max_length(mut self, max_length: u16) -> Self {
+        self.max_length = Some(max_length);
+
+        self
+    }
+
+    /// Set the minimum number of characters allowed to be entered into this
+    /// text input.
+    #[must_use]
+    pub const fn min_length(mut self, min_length: u16) -> Self {
+        self.min_length = Some(min_length);
+
+        self
+    }
+
+    /// Set the placeholder of this text input.
+    #[must_use]
+    pub fn placeholder(mut self, placeholder: String) -> Self {
+        self.placeholder = Some(placeholder);
+
+        self
+    }
+
+    /// Make this text input required.
+    #[must_use]
+    pub const fn require(mut self) -> Self {
+        self.required = true;
+
+        self
+    }
+
+    /// Make this text input's style paragraph.
+    #[must_use]
+    pub const fn paragraph(mut self) -> Self {
+        self.style = TextInputStyle::Paragraph;
+
+        self
+    }
+
+    /// Set the prefilled value of this text input.
+    #[must_use]
+    pub fn value(mut self, value: String) -> Self {
+        self.value = Some(value);
+
+        self
+    }
+
+    /// Consume this builder and return the configured [`TextInput`].
+    #[must_use]
+    pub fn build(self) -> TextInput {
+        TextInput {
+            custom_id: self.custom_id,
+            label: self.label,
+            max_length: self.max_length,
+            min_length: self.min_length,
+            placeholder: self.placeholder,
+            required: Some(self.required),
+            style: self.style,
+            value: self.value,
         }
     }
 }

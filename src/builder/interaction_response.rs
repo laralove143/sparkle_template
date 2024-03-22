@@ -1,5 +1,20 @@
+//! Builders for [`InteractionResponse`]
+//!
+//! The entrypoint of this module is [`InteractionResponseBuilder`].
+//! All the other builders can be created using methods on it.
+//!
+//! Twilight Util has an [`InteractionResponseDataBuilder`] struct to build
+//! interaction response data.
+//! This builder creates [`InteractionResponse`]s from
+//! [`InteractionResponseData`]
+//!
+//! [`InteractionResponseDataBuilder`]:
+//! https://api.twilight.rs/twilight_util/builder/struct.InteractionResponseDataBuilder
 use twilight_model::{
-    channel::message::MessageFlags,
+    channel::message::{
+        component::{ActionRow, TextInput},
+        Component, MessageFlags,
+    },
     http::interaction::{InteractionResponse, InteractionResponseData, InteractionResponseType},
 };
 
@@ -33,6 +48,7 @@ impl DeferInteractionResponseBuilder {
     }
 
     /// Consume this builder and return the configured [`InteractionResponse`]
+    #[must_use]
     pub fn build(self) -> InteractionResponse {
         let mut flags = MessageFlags::empty();
         if self.is_ephemeral {
@@ -60,14 +76,52 @@ impl DeferInteractionResponseBuilder {
     }
 }
 
+/// Create an [`InteractionResponse`] to show a modal with a builder.
+#[derive(Clone, Eq, PartialEq, Hash, Debug)]
+pub struct ModalInteractionResponseBuilder {
+    action_rows: Vec<ActionRow>,
+    custom_id: String,
+    title: String,
+}
+
+impl ModalInteractionResponseBuilder {
+    /// Add a text input component to this modal.
+    #[must_use]
+    pub fn text_input(mut self, text_input: TextInput) -> Self {
+        self.action_rows.push(ActionRow {
+            components: vec![Component::TextInput(text_input)],
+        });
+
+        self
+    }
+
+    /// Consume this builder and return the configured
+    /// [`InteractionResponse`].
+    pub fn build(self) -> InteractionResponse {
+        InteractionResponse {
+            kind: InteractionResponseType::Modal,
+            data: Some(InteractionResponseData {
+                allowed_mentions: None,
+                attachments: None,
+                choices: None,
+                components: Some(
+                    self.action_rows
+                        .into_iter()
+                        .map(Component::ActionRow)
+                        .collect(),
+                ),
+                content: None,
+                custom_id: Some(self.custom_id),
+                embeds: None,
+                flags: None,
+                title: Some(self.title),
+                tts: None,
+            }),
+        }
+    }
+}
+
 /// Create an [`InteractionResponse`] with a builder.
-///
-/// Twilight Util has an [`InteractionResponseDataBuilder`] struct to build
-/// interaction response data. This builder creates [`InteractionResponse`]s
-/// from [`InteractionResponseData`]
-///
-/// [`InteractionResponseDataBuilder`]:
-/// https://api.twilight.rs/twilight_util/builder/struct.InteractionResponseDataBuilder
 #[derive(Copy, Clone, Eq, PartialEq, Debug)]
 pub struct InteractionResponseBuilder;
 
@@ -148,10 +202,11 @@ impl InteractionResponseBuilder {
     /// This uses [`InteractionResponseType::Modal`] as the
     /// response type.
     #[must_use]
-    pub const fn show_modal(data: InteractionResponseData) -> InteractionResponse {
-        InteractionResponse {
-            kind: InteractionResponseType::Modal,
-            data: Some(data),
+    pub fn show_modal(title: String, custom_id: String) -> ModalInteractionResponseBuilder {
+        ModalInteractionResponseBuilder {
+            action_rows: vec![],
+            custom_id,
+            title,
         }
     }
 }
