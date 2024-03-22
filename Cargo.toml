@@ -1,5 +1,6 @@
 [package]
-name = "sparkle_template"
+name = "sparkle_interactions"
+version = "0.15.0"
 edition = "2021"
 authors = ["Lara Kayaalp <me@lara.lv>"]
 description = "Safe, concise Discord interaction handling for Twilight"

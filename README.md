@@ -25,7 +25,7 @@
 
 # ✨📄 Sparkle Interactions
 
-Safe, concise Discord interaction handling for Twilight
+Safe, concise Discord interaction handling for [Twilight](https://api.twilight.rs)
 
 ## ✨ Features
 
@@ -34,6 +34,14 @@ Safe, concise Discord interaction handling for Twilight
 This library provides methods to extract interaction data, command options and modal components concisely.
 
 See module documentation of the `extract` module for more.
+
+## 🏷️ Versioning
+
+Since this crate is a third party crate for Twilight, its minor version follows the minor version of Twilight that this
+crate supports.
+
+For example, for a version of the crate that supports Twilight `0.15.4`, this crate's version will
+be `0.15.x`, where `x` can be any number.
 
 ## 🙋 Wanted: Issues
 
