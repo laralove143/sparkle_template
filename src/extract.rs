@@ -2,8 +2,8 @@
 //!
 //! # General Usage Flow
 //!
-//! Extracting a value from an interaction involves the use of 1, 2 or 3 traits,
-//! depending on the kind of interaction.
+//! Extracting a value from an interaction involves the use of one, two or three
+//! traits, depending on the kind of interaction.
 //!
 //! ## Extracting Data from [`InteractionData`]
 //!
@@ -198,9 +198,9 @@
 //! to extract command options.
 //!
 //! The main difference between this crate's approach and Twilight Interactions'
-//! is that this crate doesn't rely on macros.This means you have more control
-//! over how the extraction happens, but the difference mostly comes down to
-//! preference.
+//! approach is that this crate doesn't rely on macros. This means you have more
+//! control over how the extraction happens, but the difference mostly comes
+//! down to preference.
 //!
 //! This crate also provides additional features like extracting modal
 //! components. Conversely, Twilight Interactions provides a way to create

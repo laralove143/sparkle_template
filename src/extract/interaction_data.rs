@@ -18,7 +18,7 @@ pub trait ExtractInteractionData {
 
     /// Extract [`ModalInteractionData`] from an interaction
     ///
-    /// Returns `None` if the interaction is not a modal submit
+    /// Returns `None` if the interaction is not a modal submit interaction.
     fn modal_data(self) -> Option<ModalInteractionData>;
 }
 

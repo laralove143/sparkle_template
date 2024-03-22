@@ -31,7 +31,7 @@ Safe, concise Discord interaction handling for [Twilight](https://api.twilight.r
 
 ### Extracting Interaction Data
 
-This library provides methods to extract interaction data, command options and modal components concisely.
+This library provides methods to extract interaction data, command options, and modal components concisely.
 
 See module documentation of the `extract` module for more.
 
