@@ -250,7 +250,7 @@ mod tests {
             value: CommandOptionValue::SubCommandGroup(subcommand_options.clone()),
         }];
 
-        assert_eq!(options.option(option_name), Some(option.clone()));
+        assert_eq!(options.clone().option(option_name), Some(option.clone()));
         assert_eq!(
             subcommand_options.option(&format!("{subcommand_name}/{option_name}")),
             Some(option.clone())
@@ -261,5 +261,7 @@ mod tests {
             )),
             Some(option)
         );
+
+        assert_eq!(options.option("a"), None);
     }
 }
