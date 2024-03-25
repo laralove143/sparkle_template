@@ -140,23 +140,11 @@ impl InteractionResponseBuilder {
         }
     }
 
-    /// Respond to an interaction with a message.
-    ///
-    /// This uses [`InteractionResponseType::ChannelMessageWithSource`] as the
-    /// response type.
-    #[must_use]
-    pub const fn send_message(data: InteractionResponseData) -> InteractionResponse {
-        InteractionResponse {
-            kind: InteractionResponseType::ChannelMessageWithSource,
-            data: Some(data),
-        }
-    }
-
     /// Defer an interaction to follow up with a message later.
     ///
-    /// This should be used when the message is expected to be sent after 3
-    /// seconds, as Discord requires a response in the first 3 seconds after an
-    /// interaction is created.
+    /// This method should be used when the message is expected to be sent after
+    /// 3 seconds, as Discord requires a response in the first 3 seconds
+    /// after an interaction is created.
     ///
     /// This uses [`InteractionResponseType::DeferredChannelMessageWithSource`]
     /// as the response type.
@@ -169,12 +157,29 @@ impl InteractionResponseBuilder {
         }
     }
 
-    /// Defer a message component or modal interaction to edit the message with
-    /// the component later.
+    /// Respond to an interaction with a message.
     ///
-    /// This should be used when the message is expected to be sent after 3
-    /// seconds, as Discord requires a response in the first 3 seconds after an
-    /// interaction is created.
+    /// This uses [`InteractionResponseType::ChannelMessageWithSource`] as the
+    /// response type.
+    #[must_use]
+    pub const fn send_message(data: InteractionResponseData) -> InteractionResponse {
+        InteractionResponse {
+            kind: InteractionResponseType::ChannelMessageWithSource,
+            data: Some(data),
+        }
+    }
+
+    /// Defer a message component or modal submit interaction.
+    ///
+    /// While [`InteractionResponseBuilder::defer_send_message`] sends a new
+    /// message showing a loading state, this method shows the loading state on
+    /// the button for a few seconds.
+    /// Followups still behave like
+    /// [`InteractionResponseBuilder::defer_send_message`].
+    ///
+    /// This method should be used when the message is expected to be sent after
+    /// 3 seconds, as Discord requires a response in the first 3 seconds
+    /// after an interaction is created.
     ///
     /// This uses [`InteractionResponseType::DeferredUpdateMessage`]
     /// as the response type.

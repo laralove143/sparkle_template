@@ -994,6 +994,7 @@ version = "0.15.0"
 dependencies = [
  "twilight-http",
  "twilight-model",
+ "twilight-validate",
 ]
 
 [[package]]

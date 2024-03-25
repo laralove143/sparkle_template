@@ -29,6 +29,13 @@ Safe, concise Discord interaction handling for [Twilight](https://api.twilight.r
 
 ## ✨ Features
 
+### Responding to Interactions
+
+An interaction handle is provided to respond to interactions, which holds the state of the interaction.
+
+The handle has a `respond` method which determines whether to create an interaction response or a followup message using
+the state.
+
 ### Extracting Interaction Data
 
 This library provides methods to extract interaction data, command options, and modal components concisely.
