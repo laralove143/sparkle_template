@@ -36,6 +36,15 @@ An interaction handle is provided to respond to interactions, which holds the st
 The handle has a `respond` method which determines whether to create an interaction response or a followup message using
 the state.
 
+See module documentation of `handle` module for more.
+
+### Tracking Last Response
+
+Optionally, the interaction handle can track the last message sent.
+Methods are then provided to return or update the last message.
+
+See module documentation of `handle` module for more.
+
 ### Extracting Interaction Data
 
 This library provides methods to extract interaction data, command options, and modal components concisely.
