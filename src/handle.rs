@@ -52,16 +52,22 @@
 //!     .track_last_message();
 //!
 //! handle
-//!     .respond(InteractionResponseBuilder::send_message(response_data.clone()))
+//!     .respond(InteractionResponseBuilder::send_message(
+//!         response_data.clone(),
+//!     ))
 //!     .await?;
 //! // interaction response is created here
 //!
 //! handle
-//!     .respond(InteractionResponseBuilder::send_message(response_data.clone()))
+//!     .respond(InteractionResponseBuilder::send_message(
+//!         response_data.clone(),
+//!     ))
 //!     .await?;
 //! // followup message is created here
-//! 
-//! handle.update_last(InteractionResponseBuilder::send_message(response_data.clone()))
+//!
+//! handle.update_last(InteractionResponseBuilder::send_message(
+//!     response_data.clone(),
+//! ))
 //! // followup message is updated here
 //! # }
 //! ```
