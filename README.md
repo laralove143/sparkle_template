@@ -1,7 +1,7 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
-   <a href="https://github.com/laralove143/sparkle_template/issues">
-      <img alt="Stars Badge" height="20" src="https://m3-markdown-badges.vercel.app/stars/2/1/laralove143/sparkle_template"/>
+   <a href="https://github.com/laralove143/sparkle_interactions/issues">
+      <img alt="Stars Badge" height="20" src="https://m3-markdown-badges.vercel.app/stars/2/1/laralove143/sparkle_interactions"/>
    </a>
    <a href="https://github.com/laralove143/sparkle_interactions/stargazers">
       <img alt="Issues Badge" height="20" src="https://m3-markdown-badges.vercel.app/issues/2/1/laralove143/sparkle_interactions"/>
