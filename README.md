@@ -18,7 +18,7 @@
    <a href="https://discord.lara.lv">
       <img alt="Discord" height="30" src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Discord/discord1.svg"/>
    </a>
-   <a href="https://github.com/sponsors/laralove143">
+   <a href="https://sponsor.lara.lv">
       <img alt="Sponsor" height="30" src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Sponsor/sponsor1.svg"/>
    </a>
 </div>
