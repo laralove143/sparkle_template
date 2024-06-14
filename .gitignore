@@ -1,3 +1,4 @@
 /.idea
 /target
 rustfmt.toml
+Cargo.lock
